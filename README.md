@@ -1,5 +1,6 @@
 # kubernetes-cheatsheet
 
+```
 -- get all pods
  kubectl get pods --all-namespaces
 
@@ -27,3 +28,4 @@ kubectl get secrets
 kubectl get secret <your_secret_name> -o jsonpath='{.data}'
 -- decode variable
 echo '<your_string_here>' | base64 --decode
+```
