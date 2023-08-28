@@ -8,14 +8,14 @@ Example pod yaml:
 apiVersion: v1
 kind: Pod
 metadata:
-	name: myapp
-	labels:
-			app: myapp
-			type: front-end
+  name: myapp
+  labels:
+    app: myapp
+    type: front-end
 spec:
-	containers:
-		- name: nginx-container
-			image: nginx 
+  containers:
+    - name: nginx-container
+      image: nginx 
 ```
 
 Useful commands:
@@ -45,9 +45,9 @@ kubectl describe pods
 
 -- describe one specific pod detail
 kubectl describe pods <pod_name>
----
-
 ```
+
+---
 
 ## Replication Controllers and Replica Sets
 Role of replica sets: Monitor pods and if any fail, deploy new pods to replace them.
