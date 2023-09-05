@@ -43,6 +43,12 @@ kubectl run nginx --image=nginx
 -- describe all pod details
 kubectl describe pods
 
+-- extract the definition to a file
+kubectl get pod <pod_name> -o yaml > pod-definition.yaml
+
+-- edit pod properties
+kubectl edit pod <pod_name>
+
 -- describe one specific pod detail
 kubectl describe pods <pod_name>
 ```
@@ -83,6 +89,12 @@ kubectl rollout history deployment/<deployment_name>
 kubectl rollout undo deployment/<deployment_name>
 ```
 
+## Services
+
+Useful commands:
+```
+kubectl get services
+```
 
 Other commands:
 ```
