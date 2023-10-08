@@ -1,5 +1,11 @@
 # kubernetes-cheatsheet
 
+## Cluster
+```
+kubectl cluster-info
+```
+
+
 ## Pods 
 The smallest unit of K8s 
 
@@ -51,6 +57,9 @@ kubectl edit pod <pod_name>
 
 -- describe one specific pod detail
 kubectl describe pods <pod_name>
+
+-- copy pod contents to another
+kubectl get pod <pod_name> -o yaml > pod.yaml
 ```
 
 ---
@@ -95,6 +104,61 @@ Useful commands:
 ```
 kubectl get services
 ```
+
+## ConfigMaps
+A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can consume ConfigMaps as environment variables, command-line arguments, or as configuration files in a volume.
+
+Useful commands:
+```
+-- Imperative
+kubectl create configmap <config_name> --from-literal=<key>=<value>
+
+-- File
+kubectl create configmap <config_name> --from-file=<path_to_file>
+
+kubectl get configmaps
+kubectl describe configmaps
+```
+
+## Secrets
+
+Useful commands:
+```
+-- Imperative
+kubectl create secret generic <secret_name> --from-literal=<key>=<value>
+
+-- File
+kubectl create secret generic <secret_name> --from-file=<path_to_file>
+
+kubectl get secrets
+kubectl describe secrets
+
+-- Use base64 to encode and decode values
+echo -n '<string_to_encode>' | base64
+echo -n '<string_to_decode>' | base64 --decode
+
+-- View secrets in encoded form
+kubectl get secret <secret_name> -o yaml
+
+-- encrypt alll current secrets
+kubectl get secrets --all-namespaces -o json | kubectl replace -f -
+```
+
+## Service Accounts
+Service Accounts are created for service users accessing the cluster
+
+Useful commands:
+```
+
+kubectl create serviceaccount <service_acc_name>
+kubectl get serviceaccount
+kubectl describe serviceaccount <service_acc_name>
+
+-- as of v1.24, we have to create the token separately
+kubectl create token <token_name>
+
+```
+
 
 Other commands:
 ```
